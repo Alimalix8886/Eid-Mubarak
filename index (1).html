@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eid Mubarak Fatima ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: black;
+  color: white;
+  overflow-x: hidden;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+}
+
+h1 {
+  color: gold;
+  font-size: 2.2em;
+}
+
+.poetry {
+  margin-top: 20px;
+  font-size: 1.2em;
+  line-height: 1.8;
+}
+
+img {
+  width: 80%;
+  max-width: 260px;
+  border-radius: 20px;
+  margin-top: 20px;
+  border: 3px solid gold;
+}
+
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+/* buttons */
+#yes {
+  background: #ff4b5c;
+  color: white;
+  position: relative;
+}
+
+#no {
+  background: #4CAF50;
+  color: white;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="fireworks"></canvas>
+
+<div class="container">
+  <h1>🌙 Eid Mubarak Fatima Ali ❤️</h1>
+
+  <div class="poetry">
+    "Tum meri zindagi ki sab se khoobsurat dua ho 💖<br>
+    Har Eid tumhare saath ho, bas yahi meri khwahish hai ✨"
+  </div>
+
+  <img src="https://raw.githubusercontent.com/Alimalix8886/anniversary-surprise/7429fe58b264189669607c1c8b9fdfbaea941dcb/IMG_3742.jpeg">
+
+  <br>
+
+  <button onclick="playAudio()">🔊 Play My Message</button>
+
+  <audio id="audio">
+    <source src="YOUR_AUDIO_LINK_HERE" type="audio/mpeg">
+  </audio>
+
+  <hr style="margin:30px 0; border:1px solid #555;">
+
+  <!-- LOVE GAME -->
+  <h1>Do You Love Me? ❤️</h1>
+
+  <button id="yes">Yes 😍</button>
+  <button id="no" onclick="showPopup()">No 😜</button>
+</div>
+
+<script>
+// AUDIO
+function playAudio() {
+  document.getElementById("audio").play();
+}
+
+// LOVE GAME
+let yesBtn = document.getElementById("yes");
+let clickCount = 0;
+
+yesBtn.addEventListener("click", function() {
+  clickCount++;
+
+  if (clickCount < 3) {
+    let x = Math.random() * 200 - 100;
+    let y = Math.random() * 200 - 100;
+    yesBtn.style.transform = `translate(${x}px, ${y}px)`;
+  } else {
+    showPopup();
+  }
+});
+
+// POPUP MESSAGE 💖
+function showPopup() {
+  alert("I Love you tooo so much Mela bachawww🥹💋💗");
+}
+
+// FIREWORKS
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+function createFirework(x, y) {
+  for (let i = 0; i < 60; i++) {
+    particles.push({
+      x: x,
+      y: y,
+      speedX: (Math.random() - 0.5) * 6,
+      speedY: (Math.random() - 0.5) * 6,
+      life: 100
+    });
+  }
+}
+
+function animate() {
+  ctx.fillStyle = "rgba(0,0,0,0.2)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  particles.forEach((p, i) => {
+    p.x += p.speedX;
+    p.y += p.speedY;
+    p.life--;
+
+    ctx.fillStyle = "gold";
+    ctx.fillRect(p.x, p.y, 2, 2);
+
+    if (p.life <= 0) particles.splice(i, 1);
+  });
+
+  requestAnimationFrame(animate);
+}
+
+setInterval(() => {
+  createFirework(Math.random() * canvas.width, Math.random() * canvas.height / 2);
+}, 800);
+
+animate();
+</script>
+
+</body>
+</html>
